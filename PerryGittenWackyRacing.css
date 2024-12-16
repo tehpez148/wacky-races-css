@@ -1,0 +1,251 @@
+/* Solo Submission from Perry Gitten, working in the Service Desk.
+Touched upon web dev in the past and enjoyed playing with CSS in more detail.
+Code is my own, with lots of support from documentation.
+
+The Good:
+- like the 90's look of the page 
+- had an aim of making a 'silly' page which came through
+- never used CSS animations before, so pleased how these turned out
+
+The Bad:
+- would have like to added further scroll animations but couldn't get them to work in time
+- colours are more garish than I would have liked
+- Code could definitely be cleaner, I'm sure there's some superfluous code inside 
+*/
+
+
+
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.cdnfonts.com/css/crash-crash); 
+
+body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-image: linear-gradient(skyblue, navy);
+    font-family:'Crash Crash', sans-serif; 
+    color: yellow;
+
+}
+
+article{
+    background-image:linear-gradient(to bottom right, skyblue,navy) ;
+    display: grid;
+    grid-template-columns: auto auto;
+    border: solid 10px orangered;
+    border-radius: 5px;
+    padding:50px;
+    margin:  10px;
+    font-size: 24px;
+    text-shadow: 2px 2px black;
+    row-gap: 25px;
+    column-gap: 40px;
+    scroll-timeline-name: --squareTimeline;
+    position: relative;
+
+}
+
+figure + p:has(+[data-gallery]){
+    grid-column: 1/ span 2;
+}
+
+
+h1{
+    font-family: 'Crash Crash', sans-serif;
+    font-weight: bold;
+    align-self: center;
+    font-size: 112px;
+    text-shadow: 6px 6px black;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: jumpin 2s ease-out forwards;
+    grid-column: 1/ span 2;
+  
+
+}
+
+
+
+a{
+    color:orangered;
+
+    
+}
+time{
+    grid-column: 2;
+}
+
+/*selects the h1 that immediately is followed by 1 p element*/
+h1+p{
+    font-size: 58px;
+    grid-column: 1/ span 2;
+    text-shadow: 6px 6px black;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: jumpin 2s ease-out forwards;
+}
+
+button{
+    border-radius: 5px;
+    padding: 12px;
+    font-size: 12px;
+    background-color: red;
+    font-family: 'Crash Crash', sans-serif; 
+    color: yellow;
+    text-shadow: 2px 2px black;
+}
+
+button:hover{
+    background-color: greenyellow;
+}
+
+/* animation to make title jump in */
+
+@keyframes jumpin {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    25% {
+        opacity: 0.5;
+        transform: translateY(-40px);
+    
+    }
+    50%{
+        opacity: 1;
+        transform: translateY(30px);  
+    }
+    75%{
+        opacity: 1;
+        transform: translateY(-20px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* animation for images */
+@keyframes rotateAnimation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+ 
+/* video  */
+
+video{
+    max-width: 75%;
+    border-radius: 10px;
+    border: solid 5px orangered;
+
+}
+
+.controls{
+    display: flex;
+    max-width: 75%;
+    justify-content: space-around;
+}
+progress{
+    height:50%;
+    border-radius: 25px;
+    border: solid yellow;
+}
+
+progress::-webkit-progress-bar {
+    border-radius: 25px;
+    background-color:cornflowerblue;
+}
+progress::-webkit-progress-value {
+    border-radius: 25px;
+    background-color: orangered;
+}
+
+/* data gallery */
+
+[data-gallery]{
+    grid-column: 1/span 2;
+    display: flex;
+    border-style: dashed;
+    border-color: rgb(206, 169, 6);
+    padding: 5px;
+
+    
+}
+
+[data-gallery] figure{
+    margin:0px;
+    width: 50%;
+}
+
+/* block quote */
+
+blockquote {
+    grid-column: 1/ span 2;
+    font-size: 32px;
+}
+
+/* images */
+
+img {
+    overflow: hidden;
+    transition-duration: 0.8s;
+    transition-property: transform;
+    border-radius: 10px;
+    max-width: 90%;
+    height: auto;
+}
+
+img:hover {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+}
+
+
+
+figcaption{
+    font-style:italic;
+    font-size: 20px;
+}
+
+/* removes hr, I didn't care for it */
+hr{
+    display: none;
+}
+
+/* Asides, including extras for aside inside article */
+aside{
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+aside > img{
+    max-width: 40%;
+}
+
+aside > .title, aside > .content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+article > aside{
+    border: solid black;
+    border-style: dashed;
+    border-color: rgb(206, 169, 6);
+    padding: 5px;
+    grid-column: 1/ span 2;
+
+}
+
+footer{
+    float: right;
+}
